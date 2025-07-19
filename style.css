@@ -1,0 +1,80 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #87CEEB, #ADD8E6); /* Sky Blue Gradient */
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 700px;
+  margin: 60px auto;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #4682B4; /* Steel Blue */
+}
+
+button {
+  padding: 10px 20px;
+  background: #4682B4; /* Steel Blue */
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+button:hover {
+  background: #5F9EA0; /* Cadet Blue */
+}
+
+textarea, input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+a {
+  margin-top: 15px;
+  text-decoration: none;
+  color: #4682B4; /* Steel Blue */
+  font-weight: bold;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+ul li {
+  background-color: #E0FFFF; /* Light Cyan */
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#password-strength {
+  color: red;
+  font-size: 12px;
+}
