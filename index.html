@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Secure Diary</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+  <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Secure Diary</h1>
+    <form method="POST" onsubmit="return prepareEntry()">
+      <div id="editor"></div>
+      <input type="hidden" name="entry" id="entryInput">
+      <button type="submit">Save Entry</button>
+    </form>
+    <a href="/entries">View Entries</a>
+  </div>
+
+  <script>
+    var quill = new Quill('#editor', { theme: 'snow' });
+    function prepareEntry() {
+      document.getElementById('entryInput').value = quill.root.innerHTML;
+      return true;
+    }
+  </script>
+</body>
+</html>

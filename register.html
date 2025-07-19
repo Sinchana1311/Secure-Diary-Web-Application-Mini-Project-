@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register - Secure Diary</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Create Account</h1>
+    {% if error %}
+      <p class="error">{{ error }}</p>
+    {% endif %}
+    <form method="POST">
+      <input type="text" name="username" placeholder="Username" required><br><br>
+      <input type="password" id="password" name="password" placeholder="Password" required oninput="checkPasswordStrength()"><br><br>
+      <span id="password-eye" style="cursor: pointer;">👁️</span><br><br>
+      <span id="password-strength"></span><br><br>
+      <button type="submit">Register</button>
+    </form>
+    <p>Already have an account? <a href="/login">Login here</a></p>
+  </div>
+
+  <script>
+    // Show/Hide Password Feature
+    document.getElementById("password-eye").addEventListener("click", function() {
+      const passwordField = document.getElementById("password");
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+      } else {
+        passwordField.type = "password";
+      }
+    });
+
+    // Password Strength Checker
+    function checkPasswordStrength() {
+      const password = document.getElementById("password").value;
+      const strengthElement = document.getElementById("password-strength");
+      const regex = {
+        weak: /^(?=.*[a-z])(?=.*[0-9]).{6,}$/,  // Weak password pattern (min 6 chars, 1 lowercase, 1 digit)
+        medium: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$/,  // Medium password (min 8 chars, 1 lowercase, 1 uppercase, 1 digit)
+        strong: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/  // Strong password (min 8 chars, 1 lowercase, 1 uppercase, 1 digit, special char)
+      };
+
+      if (regex.strong.test(password)) {
+        strengthElement.textContent = "Strong Password";
+        strengthElement.style.color = "green";
+      } else if (regex.medium.test(password)) {
+        strengthElement.textContent = "Medium Password";
+        strengthElement.style.color = "orange";
+      } else if (regex.weak.test(password)) {
+        strengthElement.textContent = "Weak Password";
+        strengthElement.style.color = "red";
+      } else {
+        strengthElement.textContent = "Password should be at least 6 characters with a number.";
+        strengthElement.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>
